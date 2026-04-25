@@ -18,14 +18,17 @@ var pos: Vector2 :
 func _ready():
 	pos = grid.gridToWorld(position)
 
-func _input(event):
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		if event.pressed:
-			var clicked = grid.worldToGrid(get_global_mouse_position())
-			for x in pf.getPath(pos, clicked):
-				path.append(grid.worldToGrid(x))
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _input(event):
+	#if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		#if event.pressed:
+			#var clicked = grid.worldToGrid(get_global_mouse_position())
+			#for x in pf.getPath(pos, clicked):
+				#path.append(grid.worldToGrid(x))
+
+func getClass():
+	return "Unit"
+
 func _process(delta):
 	move(delta)
 
