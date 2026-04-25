@@ -1,15 +1,31 @@
-[gd_scene load_steps=6 format=3 uid="uid://cnumja2ni2cr5"]
+[gd_scene load_steps=9 format=3 uid="uid://cnumja2ni2cr5"]
 
 [ext_resource type="Script" path="res://Scripts/Scene/main.gd" id="1_b37mf"]
+[ext_resource type="Texture2D" uid="uid://l426dg4cgq70" path="res://Assets/Art/icon.svg" id="2_e4elp"]
 [ext_resource type="Script" path="res://Scripts/Scene/Grid.gd" id="2_mdcih"]
 [ext_resource type="PackedScene" uid="uid://f2g4iluhoypw" path="res://Scenes/unit.tscn" id="3_jqdtp"]
 [ext_resource type="Script" path="res://Scripts/Scene/Camera.gd" id="3_qhc6e"]
 [ext_resource type="Script" path="res://Scenes/Pathfinding.gd" id="4_4o0ov"]
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_186ix"]
+texture = ExtResource("2_e4elp")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_u5w6a"]
+tile_size = Vector2i(128, 128)
+sources/0 = SubResource("TileSetAtlasSource_186ix")
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_b37mf")
 
-[node name="Grid" type="Node2D" parent="."]
+[node name="Grid" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_u5w6a")
+format = 2
+layer_0/name = "floor"
+layer_1/name = "building"
+layer_1/z_index = 1
+layer_1/tile_data = PackedInt32Array()
 script = ExtResource("2_mdcih")
 show_debug = true
 

@@ -19,6 +19,8 @@ File Structure:
 				Building - Building Art
 				Items - Item Art
 		Data - Where data resources are stored
+			Building - Building Tile Data
+			Floor - Floor Tile Data
 		Scenes - Where the main scenes in Godot are stored
 		Scripts - Where scripts are stored
 			Scene - Scene Scripts
