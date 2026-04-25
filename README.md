@@ -5,6 +5,11 @@ A simple colony sim game I am following a tutorial to make just cause it's been 
 following along with this tutorial:
 https://www.youtube.com/watch?v=p5VjaydbTF0&list=PLM-hFhoXjVl1hq0j9lxgRCzxkBpDZhDlT&index=2
 
+I do not know where else I'd put this, so I will slap it into the Readme. I have reached the end of the tutorial series, but the series ended before the game came to a complete; HOWEVER, it does seem like the creator of the tutorial series is still active on their Github, located here:
+	https://github.com/davisbrandon02/colony-sim-tutorial
+	
+	And a note: This isn't a branch of their github, this is my own efforts of following along with their tutorials.
+
 File Structure:
 	Main - Main Dir Starting Location
 		Assets -
