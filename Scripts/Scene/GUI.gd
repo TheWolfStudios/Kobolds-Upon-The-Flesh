@@ -29,3 +29,19 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+
+func _on_construct_pressed():
+	$BaseButtons.visible = false
+	$ConstructButtons.visible = true
+
+
+func _on_back_pressed():
+	$BaseButtons.visible = true
+	$ConstructButtons.visible = false
+
+
+func _on_gui_input(event):
+	if event is InputEventMouseButton:
+		if event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT and selectedObject != null:
+			selectedObject = null

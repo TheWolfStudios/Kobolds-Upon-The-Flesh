@@ -110,6 +110,7 @@ layout_mode = 2
 text = "Bio"
 
 [node name="ConstructButtons" type="Control" parent="CanvasLayer/GUI"]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -117,10 +118,10 @@ mouse_filter = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/GUI/ConstructButtons"]
 layout_mode = 0
-offset_left = 2.0
-offset_top = 465.0
-offset_right = 792.0
-offset_bottom = 601.0
+offset_left = 1.0
+offset_top = 511.0
+offset_right = 791.0
+offset_bottom = 647.0
 
 [node name="Back" type="Button" parent="CanvasLayer/GUI/ConstructButtons/HBoxContainer"]
 layout_mode = 2
@@ -160,3 +161,7 @@ offset_top = 440.0
 offset_right = 43.0
 offset_bottom = 463.0
 mouse_filter = 1
+
+[connection signal="gui_input" from="CanvasLayer/GUI" to="CanvasLayer/GUI" method="_on_gui_input"]
+[connection signal="pressed" from="CanvasLayer/GUI/BaseButtons/HBoxContainer/Construct" to="CanvasLayer/GUI" method="_on_construct_pressed"]
+[connection signal="pressed" from="CanvasLayer/GUI/ConstructButtons/HBoxContainer/Back" to="CanvasLayer/GUI" method="_on_back_pressed"]
