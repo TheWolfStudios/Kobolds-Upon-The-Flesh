@@ -2,7 +2,8 @@ class_name Unit
 extends Area2D
 
 @onready var main = get_tree().root.get_node("Main")
-@onready  var grid: Grid = main.get_node("Grid")
+@onready var grid: Grid = main.get_node("Grid")
+@onready var pf: Pathfinder = grid.get_node("Pathfinding")
 
 var data: UnitData
 
@@ -17,9 +18,14 @@ var pos: Vector2 :
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	path = [Vector2(1,0), Vector2(1,1), Vector2(1,2), Vector2(2,2)]
-	# pass # Replace with function body.
+	pass # Replace with function body.
 
+func _input(event):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.pressed:
+			var clicked = grid.worldToGrid(get_global_mouse_position())
+			for x in pf.getPath(pos, clicked):
+				path.append(grid.worldToGrid(x))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

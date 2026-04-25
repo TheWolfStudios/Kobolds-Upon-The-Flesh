@@ -6,12 +6,18 @@ following along with this tutorial:
 https://www.youtube.com/watch?v=p5VjaydbTF0&list=PLM-hFhoXjVl1hq0j9lxgRCzxkBpDZhDlT&index=2
 
 File Structure:
-	Main
-		Art - Where art for tiles, entities, etc is stored
-			Units - The entity Art
-			Tiles - Tile Art
-			Building - Building Art
-			Items - Item Art
+	Main - Main Dir Starting Location
+		Assets -
+			Art - Where art for tiles, entities, etc is stored
+				Units - The entity Art
+				Tiles - Tile Art
+				Building - Building Art
+				Items - Item Art
+			Audio - Sounds and such
+				Units - The entity Art
+				Tiles - Tile Art
+				Building - Building Art
+				Items - Item Art
 		Data - Where data resources are stored
 		Scenes - Where the main scenes in Godot are stored
 		Scripts - Where scripts are stored
