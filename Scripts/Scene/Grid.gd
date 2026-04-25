@@ -12,7 +12,7 @@ func generateGrid():
 	for x in width:
 		for y in height: 
 			grid[Vector2(x,y)] = CellData.new(Vector2(x,y))
-			grid[Vector2(x,y)].floorData = preload("res://Data/Floor/DebugTile.tres")
+			grid[Vector2(x,y)].floorData = preload("res://Data/Floor/DirtTileBasic.tres")
 			refreshTile(Vector2(x,y))
 			
 			# Debug Grid

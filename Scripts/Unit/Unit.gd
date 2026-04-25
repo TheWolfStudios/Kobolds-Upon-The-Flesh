@@ -4,6 +4,9 @@ extends Area2D
 @onready var main = get_tree().root.get_node("Main")
 @onready var grid: Grid = main.get_node("Grid")
 @onready var pf: Pathfinder = grid.get_node("Pathfinding")
+@onready var gui = main.get_node("CanvasLayer/GUI")
+
+signal unitSelected(obj)
 
 var data: UnitData = UnitData.new()
 
@@ -17,6 +20,7 @@ var pos: Vector2 :
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pos = grid.gridToWorld(position)
+	unitSelected.connect(gui.setSelectedObject)
 
 
 #func _input(event):
@@ -40,3 +44,8 @@ func move(delta):
 			path.pop_front()
 		else:
 			position += (grid.gridToWorld(path[0]) - position).normalized() * data.speed * delta
+
+
+func _on_input_event(viewport, event, shape_idx):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
+		emit_signal("unitSelected", self)

@@ -17,3 +17,5 @@ centered = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(64, 64)
 shape = SubResource("RectangleShape2D_xvp1b")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

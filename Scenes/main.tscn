@@ -1,20 +1,42 @@
-[gd_scene load_steps=9 format=3 uid="uid://cnumja2ni2cr5"]
+[gd_scene load_steps=16 format=3 uid="uid://cnumja2ni2cr5"]
 
 [ext_resource type="Script" path="res://Scripts/Scene/main.gd" id="1_b37mf"]
 [ext_resource type="Texture2D" uid="uid://l426dg4cgq70" path="res://Assets/Art/icon.svg" id="2_e4elp"]
 [ext_resource type="Script" path="res://Scripts/Scene/Grid.gd" id="2_mdcih"]
+[ext_resource type="Texture2D" uid="uid://dru1utrpybwiv" path="res://Assets/Art/Tiles/Dirt_Basic.png" id="3_cbs0w"]
 [ext_resource type="PackedScene" uid="uid://f2g4iluhoypw" path="res://Scenes/unit.tscn" id="3_jqdtp"]
 [ext_resource type="Script" path="res://Scripts/Scene/Camera.gd" id="3_qhc6e"]
-[ext_resource type="Script" path="res://Scenes/Pathfinding.gd" id="4_4o0ov"]
+[ext_resource type="Texture2D" uid="uid://beqnd12j5862y" path="res://Assets/Art/Tiles/Grass_Basic.png" id="4_0quhj"]
+[ext_resource type="Script" path="res://Scripts/Unit/Pathfinding.gd" id="4_4o0ov"]
+[ext_resource type="Texture2D" uid="uid://dup0smmxwgjgu" path="res://Assets/Art/Tiles/Stone_Basic.png" id="5_kcl1w"]
+[ext_resource type="Script" path="res://Scripts/Scene/GUI.gd" id="10_d3y7k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_186ix"]
 texture = ExtResource("2_e4elp")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ypry0"]
+texture = ExtResource("3_cbs0w")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yulgl"]
+texture = ExtResource("4_0quhj")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e8scl"]
+texture = ExtResource("5_kcl1w")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_u5w6a"]
 tile_size = Vector2i(128, 128)
 sources/0 = SubResource("TileSetAtlasSource_186ix")
+sources/1 = SubResource("TileSetAtlasSource_ypry0")
+sources/2 = SubResource("TileSetAtlasSource_yulgl")
+sources/3 = SubResource("TileSetAtlasSource_e8scl")
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_b37mf")
@@ -40,3 +62,101 @@ script = ExtResource("4_4o0ov")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("3_qhc6e")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GUI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("10_d3y7k")
+
+[node name="BaseButtons" type="Control" parent="CanvasLayer/GUI"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/GUI/BaseButtons"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 602.0
+offset_right = 1152.0
+offset_bottom = 647.0
+
+[node name="Construct" type="Button" parent="CanvasLayer/GUI/BaseButtons/HBoxContainer"]
+layout_mode = 2
+text = "Construct"
+
+[node name="Build" type="Button" parent="CanvasLayer/GUI/BaseButtons/HBoxContainer"]
+layout_mode = 2
+text = "Build"
+
+[node name="Designate" type="Button" parent="CanvasLayer/GUI/BaseButtons/HBoxContainer"]
+layout_mode = 2
+text = "Designate"
+
+[node name="Tasks" type="Button" parent="CanvasLayer/GUI/BaseButtons/HBoxContainer"]
+layout_mode = 2
+text = "Tasks"
+
+[node name="Bio" type="Button" parent="CanvasLayer/GUI/BaseButtons/HBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Bio"
+
+[node name="ConstructButtons" type="Control" parent="CanvasLayer/GUI"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/GUI/ConstructButtons"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 465.0
+offset_right = 792.0
+offset_bottom = 601.0
+
+[node name="Back" type="Button" parent="CanvasLayer/GUI/ConstructButtons/HBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[node name="Godot" type="Button" parent="CanvasLayer/GUI/ConstructButtons/HBoxContainer"]
+layout_mode = 2
+text = "Debug"
+icon = ExtResource("2_e4elp")
+
+[node name="Dirt" type="Button" parent="CanvasLayer/GUI/ConstructButtons/HBoxContainer"]
+layout_mode = 2
+text = "Dirt"
+icon = ExtResource("3_cbs0w")
+
+[node name="Grass" type="Button" parent="CanvasLayer/GUI/ConstructButtons/HBoxContainer"]
+layout_mode = 2
+text = "Grass"
+icon = ExtResource("4_0quhj")
+
+[node name="Stone" type="Button" parent="CanvasLayer/GUI/ConstructButtons/HBoxContainer"]
+layout_mode = 2
+text = "Stone"
+icon = ExtResource("5_kcl1w")
+
+[node name="Info" type="Control" parent="CanvasLayer/GUI"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+
+[node name="Name" type="Label" parent="CanvasLayer/GUI/Info"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 440.0
+offset_right = 43.0
+offset_bottom = 463.0
+mouse_filter = 1
