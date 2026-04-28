@@ -1,6 +1,9 @@
 class_name GUI
 extends Control
 
+@onready var main = get_tree().root.get_node("Main")
+@onready var grid: Grid = main.get_node("Grid")
+
 var selectedObject = null :
 	get:
 		return selectedObject
@@ -20,6 +23,22 @@ var selectedObject = null :
 
 func setSelectedObject(obj):
 	selectedObject = obj
+
+func _input(event):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if selectedObject != null:
+			$Info.visible = true
+			match selectedObject.getClass():
+				"Unit":
+					var selected = selectedObject
+					if event.pressed:
+						var clicked = grid.worldToGrid(main.get_global_mouse_position())
+						print(clicked)
+						for x in selected.pf.getPath(selected.pos, clicked):
+							selected.path.append(grid.worldToGrid(x))
+							#print(str(selected.path))
+		else:
+			pass
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
