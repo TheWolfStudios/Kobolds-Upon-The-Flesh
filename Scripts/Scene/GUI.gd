@@ -34,9 +34,16 @@ func _input(event):
 					if event.pressed:
 						var clicked = grid.worldToGrid(main.get_global_mouse_position())
 						#print(clicked)
-						for x in selected.pf.getPath(selected.pos, clicked):
-							selected.path.append(grid.worldToGrid(x))
-							#print(str(selected.path))
+						if selected.path.size() > 0 and Input.is_action_pressed("Shift_Modifier"):
+							for x in selected.pf.getPath(selected.path[-1], clicked):
+								selected.path.append(grid.worldToGrid(x))
+								#print(str(selected.path))
+						else:
+							for x in selected.pf.getPath(selected.pos, clicked):
+								selected.path.clear()
+								selected.path.append(grid.worldToGrid(x))
+								#print(str(selected.path))
+
 		else:
 			pass
 
