@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="FloorData" load_steps=2 format=3 uid="uid://buh8iw5g6w5r4"]
+
+[ext_resource type="Script" path="res://Data/FloorData.gd" id="1_xclhw"]
+
+[resource]
+script = ExtResource("1_xclhw")
+name = "Deep Water"
+ID = 6
+coords = Vector2(0, 0)

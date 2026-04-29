@@ -1,18 +1,47 @@
 class_name Grid
 extends TileMap
 
-@export var width: int = 12
-@export var height: int = 12
+@export var width: int = 100
+@export var height: int = 100
 @export var cell_size: int = 128
+@export var noise_scale = 0.1
 @export var show_debug: bool = false
+
+var deepWater = 0.4
+var shallowWater = 0.5
+var dirt = 0.6
+var grass = 0.7
+var stone = 0.8
 
 var grid: Dictionary = {}
 
 func generateGrid():
+	var NOISE = FastNoiseLite.new()
+	NOISE.set_seed(randi())
+	NOISE.noise_type = FastNoiseLite.TYPE_PERLIN
+	NOISE.frequency = noise_scale
+	
+	
 	for x in width:
-		for y in height: 
+		for y in height:
+			var noise_value = NOISE.get_noise_2d(x, y)
+			noise_value = (noise_value + 1)/2
+			
+			var tile_pos = Vector2i(x, y)
+			var atlas_coords = Vector2i(0, 0)
 			grid[Vector2(x,y)] = CellData.new(Vector2(x,y))
-			grid[Vector2(x,y)].floorData = preload("res://Data/Floor/DirtTileBasic.tres")
+			
+			if noise_value < deepWater:
+				grid[Vector2(x,y)].floorData = preload("res://Data/Floor/DeepWaterTileBasic.tres")
+			elif noise_value < shallowWater:
+				grid[Vector2(x,y)].floorData = preload("res://Data/Floor/ShallowWaterTileBasic.tres")
+			elif noise_value < dirt:
+				grid[Vector2(x,y)].floorData = preload("res://Data/Floor/DirtTileBasic.tres")
+			elif noise_value < grass:
+				grid[Vector2(x,y)].floorData = preload("res://Data/Floor/GrassTileBasic.tres")
+			else:
+				grid[Vector2(x,y)].floorData = preload("res://Data/Floor/StoneTileBasic.tres")
+			
 			refreshTile(Vector2(x,y))
 			
 			# Debug Grid

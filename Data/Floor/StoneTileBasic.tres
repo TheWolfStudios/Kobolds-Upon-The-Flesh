@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_vl11k")
-name = ""
-ID = 0
+name = "Stone"
+ID = 4
 coords = Vector2(0, 0)

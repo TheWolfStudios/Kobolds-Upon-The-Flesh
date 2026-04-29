@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cnumja2ni2cr5"]
+[gd_scene load_steps=22 format=3 uid="uid://cnumja2ni2cr5"]
 
 [ext_resource type="Script" path="res://Scripts/Scene/main.gd" id="1_b37mf"]
 [ext_resource type="Texture2D" uid="uid://l426dg4cgq70" path="res://Assets/Art/icon.svg" id="2_e4elp"]
@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://beqnd12j5862y" path="res://Assets/Art/Tiles/Grass_Basic.png" id="4_0quhj"]
 [ext_resource type="Script" path="res://Scripts/Unit/Pathfinding.gd" id="4_4o0ov"]
 [ext_resource type="Texture2D" uid="uid://dup0smmxwgjgu" path="res://Assets/Art/Tiles/Stone_Basic.png" id="5_kcl1w"]
+[ext_resource type="Texture2D" uid="uid://15hbscvjm5vk" path="res://Assets/Art/Tiles/Water_Shallow_Basic.png" id="6_kpnls"]
+[ext_resource type="Texture2D" uid="uid://b1i7gg7bd3w70" path="res://Assets/Art/Tiles/Water_Deep_Basic.png" id="7_6odqn"]
+[ext_resource type="Texture2D" uid="uid://dr4jkns2kr45f" path="res://Assets/Art/Tiles/TileMap_Atlas_Basic.png" id="8_xdqxf"]
 [ext_resource type="Script" path="res://Scripts/Scene/GUI.gd" id="10_d3y7k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_186ix"]
@@ -31,12 +34,35 @@ texture = ExtResource("5_kcl1w")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jcu05"]
+texture = ExtResource("6_kpnls")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n54df"]
+texture = ExtResource("7_6odqn")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q4nt3"]
+texture = ExtResource("8_xdqxf")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_u5w6a"]
 tile_size = Vector2i(128, 128)
 sources/0 = SubResource("TileSetAtlasSource_186ix")
 sources/1 = SubResource("TileSetAtlasSource_ypry0")
 sources/2 = SubResource("TileSetAtlasSource_yulgl")
 sources/3 = SubResource("TileSetAtlasSource_e8scl")
+sources/5 = SubResource("TileSetAtlasSource_jcu05")
+sources/6 = SubResource("TileSetAtlasSource_n54df")
+sources/7 = SubResource("TileSetAtlasSource_q4nt3")
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_b37mf")
