@@ -47,5 +47,5 @@ func move(delta):
 
 
 func _on_input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
+	if event.is_action_pressed("Input_Primary"):
 		emit_signal("unitSelected", self)

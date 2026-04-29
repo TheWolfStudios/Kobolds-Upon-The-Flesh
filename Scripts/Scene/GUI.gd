@@ -25,7 +25,7 @@ func setSelectedObject(obj):
 	selectedObject = obj
 
 func _input(event):
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+	if event.is_action_pressed("Input_Secondary"):
 		if selectedObject != null:
 			$Info.visible = true
 			match selectedObject.getClass():
@@ -33,7 +33,7 @@ func _input(event):
 					var selected = selectedObject
 					if event.pressed:
 						var clicked = grid.worldToGrid(main.get_global_mouse_position())
-						print(clicked)
+						#print(clicked)
 						for x in selected.pf.getPath(selected.pos, clicked):
 							selected.path.append(grid.worldToGrid(x))
 							#print(str(selected.path))
@@ -62,5 +62,5 @@ func _on_back_pressed():
 
 func _on_gui_input(event):
 	if event is InputEventMouseButton:
-		if event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT and selectedObject != null:
+		if event.is_action_pressed("Input_Primary") and selectedObject != null:
 			selectedObject = null
